@@ -1,0 +1,123 @@
+{
+  "name": "كُميل برو - المنظم الجامعي الذكي",
+  "short_name": "كُميل برو",
+  "description": "أقوى تطبيق جامعي شامل لتنظيم الحياة الأكاديمية. يعمل بدون إنترنت ويساعدك على إدارة المواد، المهام، الملفات والجداول الدراسية بكفاءة عالية.",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#4f46e5",
+  "background_color": "#f8fafc",
+  "lang": "ar",
+  "dir": "rtl",
+  "scope": "/",
+  
+  "icons": [
+    {
+      "src": "icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "categories": ["education", "productivity", "lifestyle"],
+  
+  "shortcuts": [
+    {
+      "name": "إضافة مهمة",
+      "short_name": "مهمة جديدة",
+      "description": "إضافة مهمة جديدة بسرعة",
+      "url": "/?action=add-task",
+      "icons": [{"src": "icon-96.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "عرض الجدول",
+      "short_name": "الجدول",
+      "description": "عرض الجدول الدراسي",
+      "url": "/?view=schedule",
+      "icons": [{"src": "icon-96.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "المهام المعلقة",
+      "short_name": "المهام",
+      "description": "عرض المهام المعلقة",
+      "url": "/?view=tasks",
+      "icons": [{"src": "icon-96.png", "sizes": "96x96"}]
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "screenshot-dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "لوحة التحكم الرئيسية"
+    },
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "الواجهة على الهاتف"
+    }
+  ],
+
+  "related_applications": [],
+  "prefer_related_applications": false,
+
+  "protocols": [],
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  }
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="كُميل برو - أقوى تطبيق جامعي شامل لتنظيم الحياة الأكاديمية">
+    <meta name="keywords" content="جامعة,تنظيم,مهام,جدول دراسي,طلاب">
+    <meta name="author" content="Komeil Pro Team">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <title>كُميل برو - المنظم الجامعي الذكي</title>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="كُميل برو">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash" class="splash-screen active">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#4f46e5"/>
+                    <path d="M30 40h40v6H30z" fill="white"/>
+                    <path d="M30 50h32v6H30z" fill="white"/>
+                    <path d="M30 60h28v6H30z" fill="white"/>
+                    <circle cx="75" cy="35" r="8" fill="#10b981"/>
+                </svg>
+            </div>
+            <h1 class="splash-title">كُميل برو</h1>
+            <p class="splash-subtitle">المنظم الجامعي الذكي</p>
+            <div class="splash-loader">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button id="menu-btn" class="btn-icon" aria-label="القائمة">
+                        <i class="icon-menu"></i>
+                    </button>
+                    <h1 class="app-title">كُميل برو</h1>
+                </div>
+                <div class="header-right">
+                    <button id="notifications-btn" class="btn-icon notification-btn" aria-label="الإشعارات">
+                        <i class="icon-bell"></i>
+                        <span id="notification-count" class="notification-count hidden">0</span>
+                    </button>
+                    <button id="theme-btn" class="btn-icon" aria-label="تغيير السمة">
+                        <i class="icon-moon"></i>
+                    </button>
+                    <button id="profile-btn" class="btn-icon" aria-label="الملف الشخصي">
+                        <i class="icon-user"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-content">
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#dashboard" class="nav-link active" data-view="dashboard">
+                            <i class="icon-home"></i>
+                            <span>الرئيسية</span>
+                        </a></li>
+                        <li><a href="#subjects" class="nav-link" data-view="subjects">
+                            <i class="icon-book"></i>
+                            <span>المواد الدراسية</span>
+                        </a></li>
+                        <li><a href="#tasks" class="nav-link" data-view="tasks">
+                            <i class="icon-check-circle"></i>
+                            <span>المهام</span>
+                        </a></li>
+                        <li><a href="#schedule" class="nav-link" data-view="schedule">
+                            <i class="icon-calendar"></i>
+                            <span>الجدول الدراسي</span>
+                        </a></li>
+                        <li><a href="#files" class="nav-link" data-view="files">
+                            <i class="icon-folder"></i>
+                            <span>الملفات</span>
+                        </a></li>
+                        <li><a href="#grades" class="nav-link" data-view="grades">
+                            <i class="icon-star"></i>
+                            <span>الدرجات</span>
+                        </a></li>
+                        <li><a href="#notes" class="nav-link" data-view="notes">
+                            <i class="icon-edit"></i>
+                            <span>الملاحظات</span>
+                        </a></li>
+                        <li><a href="#goals" class="nav-link" data-view="goals">
+                            <i class="icon-target"></i>
+                            <span>الأهداف</span>
+                        </a></li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="storage-info">
+                        <div class="storage-label">مساحة التخزين</div>
+                        <div class="storage-bar">
+                            <div id="storage-used" class="storage-progress" style="width: 25%"></div>
+                        </div>
+                        <div id="storage-text" class="storage-text">2.5 MB / 10 MB</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="dashboard-view" class="view active">
+                <div class="view-header">
+                    <h2 class="view-title">لوحة التحكم</h2>
+                    <div class="view-actions">
+                        <select id="semester-select" class="select">
+                            <option value="current">الفصل الحالي</option>
+                            <option value="fall2024">خريف 2024</option>
+                            <option value="spring2024">ربيع 2024</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Stats Cards -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon subjects">
+                                <i class="icon-book"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="total-subjects" class="stat-number">0</h3>
+                                <p class="stat-label">المواد الدراسية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon tasks">
+                                <i class="icon-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="total-tasks" class="stat-number">0</h3>
+                                <p class="stat-label">المهام المعلقة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon gpa">
+                                <i class="icon-star"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="current-gpa" class="stat-number">0.0</h3>
+                                <p class="stat-label">المعدل التراكمي</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon files">
+                                <i class="icon-folder"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="total-files" class="stat-number">0</h3>
+                                <p class="stat-label">الملفات</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3 class="section-title">الإجراءات السريعة</h3>
+                        <div class="actions-grid">
+                            <button class="action-btn" data-action="add-task">
+                                <i class="icon-plus"></i>
+                                <span>إضافة مهمة</span>
+                            </button>
+                            <button class="action-btn" data-action="add-subject">
+                                <i class="icon-book-open"></i>
+                                <span>إضافة مادة</span>
+                            </button>
+                            <button class="action-btn" data-action="upload-file">
+                                <i class="icon-upload"></i>
+                                <span>رفع ملف</span>
+                            </button>
+                            <button class="action-btn" data-action="add-note">
+                                <i class="icon-edit-3"></i>
+                                <span>ملاحظة سريعة</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="recent-activity">
+                        <h3 class="section-title">النشاط الأخير</h3>
+                        <div id="activity-list" class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="icon-clock"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="activity-text">مرحباً بك في كُميل برو!</p>
+                                    <span class="activity-time">الآن</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Today's Schedule -->
+                    <div class="today-schedule">
+                        <h3 class="section-title">جدول اليوم</h3>
+                        <div id="today-classes" class="schedule-list">
+                            <div class="empty-state">
+                                <i class="icon-calendar"></i>
+                                <p>لا توجد محاضرات اليوم</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Tasks -->
+                    <div class="upcoming-tasks">
+                        <h3 class="section-title">المهام القادمة</h3>
+                        <div id="upcoming-tasks-list" class="tasks-list">
+                            <div class="empty-state">
+                                <i class="icon-check-circle"></i>
+                                <p>لا توجد مهام معلقة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subjects View -->
+            <section id="subjects-view" class="view">
+                <div class="view-header">
+                    <h2 class="view-title">المواد الدراسية</h2>
+                    <div class="view-actions">
+                        <button class="btn btn-primary" id="add-subject-btn">
+                            <i class="icon-plus"></i>
+                            إضافة مادة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="subjects-container">
+                    <div id="subjects-list" class="subjects-grid">
+                        <!-- Subjects will be populated by JS -->
+                    </div>
+                    <div id="subjects-empty" class="empty-state">
+                        <i class="icon-book"></i>
+                        <h3>لا توجد مواد دراسية</h3>
+                        <p>ابدأ بإضافة مادة دراسية لتنظيم دراستك</p>
+                        <button class="btn btn-primary" data-action="add-subject">
+                            <i class="icon-plus"></i>
+                            إضافة أول مادة
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other views will be populated by components.js -->
+        </main>
+
+        <!-- Overlay -->
+        <div id="overlay" class="overlay"></div>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+
+    <!-- Notification Container -->
+    <div id="notifications-container" class="notifications-container"></div>
+
+    <!-- Scripts -->
+    <script src="database.js"></script>
+    <script src="notifications.js"></script>
+    <script src="components.js"></script>
+    <script src="advanced-features.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>

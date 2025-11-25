@@ -1,0 +1,102 @@
+{
+  "name": "komeil-pro",
+  "version": "1.0.0",
+  "description": "كُميل برو - المنظم الجامعي الذكي. أقوى تطبيق جامعي شامل لتنظيم الحياة الأكاديمية.",
+  "keywords": [
+    "education",
+    "university",
+    "student",
+    "organizer",
+    "planner",
+    "tasks",
+    "schedule",
+    "grades",
+    "arabic",
+    "pwa",
+    "offline"
+  ],
+  "author": {
+    "name": "Komeil Pro Team",
+    "email": "support@komeil-pro.app"
+  },
+  "license": "MIT",
+  "homepage": "https://komeil-pro.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/komeil-pro/komeil-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/komeil-pro/komeil-pro/issues"
+  },
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "build": "echo 'No build process needed for vanilla JS PWA'",
+    "test": "echo 'No tests configured'",
+    "deploy": "echo 'Deploy to your preferred hosting service'",
+    "validate": "html5validator --root . --match '*.html'",
+    "lighthouse": "lighthouse http://localhost:3000 --output html --output-path lighthouse-report.html"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "html5validator": "^0.4.2",
+    "lighthouse": "^10.4.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
+  ],
+  "pwa": {
+    "name": "كُميل برو",
+    "short_name": "كُميل برو",
+    "theme_color": "#4f46e5",
+    "background_color": "#f8fafc",
+    "display": "standalone",
+    "start_url": "/",
+    "icons": {
+      "72": "icon-72.png",
+      "96": "icon-96.png",
+      "128": "icon-128.png",
+      "144": "icon-144.png",
+      "152": "icon-152.png",
+      "192": "icon-192.png",
+      "384": "icon-384.png",
+      "512": "icon-512.png"
+    }
+  },
+  "features": [
+    "Offline support with Service Worker",
+    "IndexedDB for local data storage",
+    "Progressive Web App (PWA)",
+    "Responsive design for all devices",
+    "Arabic language support (RTL)",
+    "Dark/Light theme toggle",
+    "Advanced search functionality",
+    "Data export/import (JSON, CSV)",
+    "Keyboard shortcuts",
+    "Push notifications",
+    "Background sync",
+    "Print support"
+  ],
+  "technical": {
+    "framework": "Vanilla JavaScript",
+    "storage": "IndexedDB",
+    "offline": "Service Worker",
+    "ui": "CSS Grid & Flexbox",
+    "icons": "SVG with CSS icons",
+    "fonts": "Google Fonts (Noto Sans Arabic)",
+    "compatibility": "Modern browsers (Chrome 60+, Firefox 55+, Safari 11+, Edge 79+)"
+  },
+  "size": {
+    "total": "~500KB",
+    "html": "~15KB",
+    "css": "~25KB",
+    "javascript": "~120KB",
+    "assets": "~340KB"
+  }
+}
